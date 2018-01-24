@@ -8,7 +8,7 @@
                 <span>{{infor.signature}}</span>
                 <dl>
                     <dt>好友列表</dt>
-                    <dd v-for="item in infor.friend" :key="">{{item}}</dd>
+                    <dd v-for="item in infor.friend" :key="item.id">{{item}}</dd>
                 </dl>
             </div>
         </el-col>  

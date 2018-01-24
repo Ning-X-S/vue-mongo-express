@@ -155,7 +155,6 @@ export default {
     background: #fff;
     border: 1px solid #eaeaea;
     box-shadow: 0 0 25px #cac6c6;
-
     background: -ms-linear-gradient(top, #fff, #6495ed);        /* IE 10 */
     background:-moz-linear-gradient(top,#b8c4cb,#f6f6f8);/*火狐*/
     background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#b8c4cb), to(#f6f6f8));/*谷歌*/

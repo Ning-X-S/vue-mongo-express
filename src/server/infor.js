@@ -2,7 +2,6 @@ const models = require('./db').Infor
 const express = require('express')
 const router = express.Router()
 
-
 router.get('/infor/infor/searchInfor', (req, res) => {
     //查询该账号下的数据
   models.findOne({"account": req.query.account },(err,docs) => {
