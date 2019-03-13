@@ -18,6 +18,7 @@
         <el-button type="primary" style="width:100%;" @click="createAccount">注册</el-button>
         <el-button type="primary" style="width:100%;" @click="deleteAccount">删除</el-button>
         <el-button type="primary" style="width:100%;" @click="updatedAccount">修改</el-button>
+        <el-button type="primary" style="width:100%;" @click="goSon">换路由</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -49,6 +50,9 @@ export default {
     }
   },
   methods: {
+    goSon() {
+      this.$router.push({ path: '/son' });
+    },
     createAccount() {
       let params = {
         account : this.userName,
@@ -106,11 +110,11 @@ export default {
             alert(res.msg)
             console.log()
             if(res.code == 1){
-               this.$router.push({ path: '/home' });
+              this.$router.push({ path: '/home' });
             }
           })
           .catch((reject) => {
-            // console.log(reject)
+            console.log(reject)
             throw new Error(reject)
           })
     },
