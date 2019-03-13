@@ -12,13 +12,14 @@ const loginSchema = mongoose.Schema({
   password: String,
   newPassword: String
 }, { collection: 'listData' });
+
 const inforSchema = mongoose.Schema({
   account: String,
   name: String,
   description: String,
   signature: String,
   friend:Object
-},{collection: "infor"})
+},{collection: "listData"})
 
 /************** 定义模型Model **************/
 const Models = {

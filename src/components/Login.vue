@@ -59,7 +59,7 @@ export default {
         return false
       }
       console.log(params)
-      this.$http.post('http://localhost:8088/api/login/createAccount',params)
+      this.$http.post('http://localhost:8088/api/login/createAccount', params)
           .then((response) => {
             let res = response.data
             console.log(res)
@@ -79,7 +79,7 @@ export default {
         return false;
       }
       console.log(params)
-      this.$http.post('http://localhost:8088/api/login/deleteAccount',params)
+      this.$http.post('http://localhost:8088/api/login/deleteAccount', params)
           .then((response) => {
             let res = response.data
             //console.log(params)
@@ -99,7 +99,7 @@ export default {
         alert("账号和密码不能为空!")
         return false;
       }
-      this.$http.post('http://localhost:8088/api/login/loginAccount',params)
+      this.$http.post('http://localhost:8088/api/login/loginAccount', params)
           .then((response) => {
             let res = response.data
             console.log(res)
@@ -110,7 +110,8 @@ export default {
             }
           })
           .catch((reject) => {
-            console.log(reject)
+            // console.log(reject)
+            throw new Error(reject)
           })
     },
     updatedAccount() {
@@ -127,7 +128,7 @@ export default {
         alert("新密码不能为空!")
         return false;
       }
-      this.$http.post('http://localhost:8088/api/login/updatedAccount',params)
+      this.$http.post('http://localhost:8088/api/login/updatedAccount', params)
           .then((response) => {
             let res = response.data
             console.log(res)

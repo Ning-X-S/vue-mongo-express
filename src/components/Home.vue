@@ -26,7 +26,7 @@ export default {
       alert("正在刷新中")
   },
   created: function(){
-      this.$http.get("http://localhost:8088/infor/infor/searchInfor?account="+"qiuwenju")
+      this.$http.get("http://localhost:8088/infor/infor/searchInfor?account=liuxingwei")
         .then((response) => {
             let res = response.data
             console.log(res)
