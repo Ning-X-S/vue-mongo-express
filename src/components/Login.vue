@@ -34,15 +34,15 @@ export default {
       newPassword: '',
       rules: {
         username: [
-          {required: false, message: '请输入账号', trigger: 'blur'},
+          {required: false, message: '请输入账号', trigger: 'blur'}
           //{ validator: validaePass }
         ],
         password: [
-          {required: false, message: '请输入密码', trigger: 'blur'},
+          {required: false, message: '请输入密码', trigger: 'blur'}
           //{ validator: validaePass2 }
         ],
         newPassword: [
-          {required: false, message: '请输入新密码', trigger: 'blur'},
+          {required: false, message: '请输入新密码', trigger: 'blur'}
           //{ validator: validaePass2 }
         ]
       },
@@ -63,7 +63,7 @@ export default {
         return false
       }
       console.log(params)
-      this.$http.post('http://localhost:8088/api/login/createAccount', params)
+      this.$http.post('http://localhost:7001/api/login/createAccount', params)
           .then((response) => {
             let res = response.data
             console.log(res)
@@ -83,7 +83,7 @@ export default {
         return false;
       }
       console.log(params)
-      this.$http.post('http://localhost:8088/api/login/deleteAccount', params)
+      this.$http.post('http://localhost:7001/api/login/deleteAccount', params)
           .then((response) => {
             let res = response.data
             //console.log(params)
@@ -103,7 +103,7 @@ export default {
         alert("账号和密码不能为空!")
         return false;
       }
-      this.$http.post('http://localhost:8088/api/login/loginAccount', params)
+      this.$http.post('http://localhost:7001/api/login/loginAccount', params)
           .then((response) => {
             let res = response.data
             console.log(res)
@@ -132,7 +132,7 @@ export default {
         alert("新密码不能为空!")
         return false;
       }
-      this.$http.post('http://localhost:8088/api/login/updatedAccount', params)
+      this.$http.post('http://localhost:7001/api/login/updatedAccount', params)
           .then((response) => {
             let res = response.data
             console.log(res)

@@ -43,7 +43,7 @@ export default {
   created: function(){
     this.add()
     this.addLess()
-    this.$http.get("http://localhost:8088/infor/infor/searchInfor?account=liuxingwei")
+    this.$http.get("http://localhost:7001/infor/infor/searchInfor?account=liuxingwei")
       .then((response) => {
           let res = response.data
           this.infor = res.data
