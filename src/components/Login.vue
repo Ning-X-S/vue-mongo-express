@@ -20,6 +20,12 @@
         <el-button type="primary" style="width:100%;" @click="updatedAccount">修改</el-button>
         <el-button type="primary" style="width:100%;" @click="goSon">换路由</el-button>
       </el-form-item>
+      <textarea
+        name=""
+        ref="textarea"
+        id="textarea"
+        placeholder="我要说二句..."
+        rows="1" />
     </el-form>
   </div>
 </template>
@@ -141,7 +147,50 @@ export default {
           .catch((reject) => {
             console.log(reject)
           })
+    },
+    makeExpandingArea (el) {
+      let timer = null
+      // 由于ie8有溢出堆栈问题，故调整了这里
+      let setStyle = function (el, auto) {
+        if (auto) el.style.height = 'auto'
+        el.style.height = el.scrollHeight + 'px'
+      }
+      let delayedResize = (el) => {
+        if (timer) {
+          clearTimeout(timer)
+          timer = null
+        }
+        timer = setTimeout(() => {
+          setStyle(el)
+        }, 200)
+      }
+      if (el.addEventListener) {
+        el.addEventListener('input', () => {
+          setStyle(el, 1)
+        }, false)
+        setStyle(el)
+      } else if (el.attachEvent) {
+        el.attachEvent('onpropertychange', () => {
+          setStyle(el)
+        })
+        setStyle(el)
+      }
+      if (window.VBArray && window.addEventListener) { // IE9
+        el.attachEvent('onkeydown', () => {
+          let key = window.event.keyCode
+          if (key === 8 || key === 46) delayedResize(el)
+        })
+        el.attachEvent('oncut', function () {
+          delayedResize(el)
+        }) // 处理粘贴
+      }
     }
+  },
+  mounted () {
+    this.$nextTick(_ => {
+      let textarea = this.$refs.textarea
+      this.makeExpandingArea(textarea)
+    })
   }
 }
 </script>
@@ -165,7 +214,7 @@ export default {
     background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#b8c4cb), to(#f6f6f8));/*谷歌*/
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#6495ed));      /* Safari 4-5, Chrome 1-9*/
     background: -webkit-linear-gradient(top, #fff, #6495ed,#fff);   /*Safari5.1 Chrome 10+*/
-    background: -o-linear-gradient(top, #fff, #6495ed);  /*Opera 11.10+*/   
+    background: -o-linear-gradient(top, #fff, #6495ed);  /*Opera 11.10+*/
   }
   .title {
     margin: 0px auto 40px auto;
