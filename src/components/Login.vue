@@ -26,11 +26,18 @@
         id="textarea"
         placeholder="我要说二句..."
         rows="1" />
+      <div
+        class="birthday"
+        @click="datePicker">
+        {{ birthday }}
+      </div>
     </el-form>
   </div>
 </template>
 
 <script>
+import DatePicker from '@/components/datePicker/datePicker'
+import '@/components/datePicker/datePicker.css'
 export default {
   name: 'hello',
   data() {
@@ -52,7 +59,8 @@ export default {
           //{ validator: validaePass2 }
         ]
       },
-      checked: false
+      checked: false,
+      birthday: '2019-01-01'
     }
   },
   methods: {
@@ -184,6 +192,20 @@ export default {
           delayedResize(el)
         }) // 处理粘贴
       }
+    },
+    datePicker () {
+      new DatePicker({
+        'type': '3', // 0年, 1年月, 2月日, 3年月日
+        'title': '请选择日期', // 标题(可选)
+        'maxYear': '2010', // 最大年份（可选）
+        'minYear': '1920', // 最小年份（可选）
+        'separator': '-', // 分割符(可选)
+        'defaultValue': this.birthday,
+        'callBack': (val) => {
+        // 回调函数（val为选中的日期）
+          this.birthday = val
+        }
+      })
     }
   },
   mounted () {
